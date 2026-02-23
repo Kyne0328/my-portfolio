@@ -26,13 +26,15 @@ export const skills = {
     'Java',
     'Python',
     'SQL',
+    'MySQL',
     'HTML',
     'CSS',
     'PHP',
     'Dart',
   ],
   security: ['Wireshark'],
-  platforms: ['Windows', 'WSL2'],
+  platforms: ['Windows', 'WSL2', 'Ubuntu'],
+  devops: ['Git', 'GitHub Actions'],
 };
 
 export const socials = {

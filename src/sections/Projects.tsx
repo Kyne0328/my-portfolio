@@ -17,7 +17,7 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
           >
             <Card hover className="h-full flex flex-col group">
               <div className="flex items-start justify-between mb-3">
@@ -25,17 +25,36 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
                   {project.title}
                 </h3>
                 {project.featured && (
-                  <Badge variant="primary">Featured</Badge>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Badge variant="primary">Featured</Badge>
+                  </motion.div>
                 )}
               </div>
               <p className="text-muted-foreground mb-4 flex-grow">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <Badge key={tech} variant="outline">
-                    {tech}
-                  </Badge>
+                {project.tech.map((tech, techIndex) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.2,
+                      delay: techIndex * 0.03,
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Badge variant="outline">
+                      {tech}
+                    </Badge>
+                  </motion.div>
                 ))}
               </div>
               <Button

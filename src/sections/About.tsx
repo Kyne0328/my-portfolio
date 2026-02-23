@@ -56,10 +56,17 @@ export function AboutSection() {
         >
           <Card className="space-y-4">
             {highlights.map((item, index) => (
-              <div key={item.label} className={index < highlights.length - 1 ? 'pb-4 border-b border-border' : ''}>
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className={index < highlights.length - 1 ? 'pb-4 border-b border-border' : ''}
+              >
                 <p className="text-sm text-muted-foreground mb-1">{item.label}</p>
                 <p className="font-semibold text-primary">{item.value}</p>
-              </div>
+              </motion.div>
             ))}
           </Card>
         </motion.div>

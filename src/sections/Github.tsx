@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, lazy, Suspense } from 'react';
+import { motion } from 'framer-motion';
 import { Section, SectionHeading, Card } from '@/components/ui';
 import { GithubRepo, GithubContributions } from '@/types';
 
@@ -171,14 +172,19 @@ function ContributionGraph() {
   );
 }
 
-function RepoCard({ repo }: { repo: GithubRepo }) {
+function RepoCard({ repo, index }: { repo: GithubRepo; index: number }) {
   const langColor = repo.language ? languageColors[repo.language] || 'var(--primary)' : 'var(--muted-foreground)';
   return (
-    <a
+    <motion.a
       href={repo.html_url}
       target="_blank"
       rel="noopener noreferrer"
       className="block p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/30 transition-all group"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.3, delay: index * 0.03 }}
+      whileHover={{ y: -4 }}
     >
       <h4 className="font-medium truncate mb-1 group-hover:text-primary transition-colors">
         {repo.name}
@@ -219,7 +225,7 @@ function RepoCard({ repo }: { repo: GithubRepo }) {
           {repo.forks_count}
         </span>
       </div>
-    </a>
+    </motion.a>
   );
 }
 
@@ -280,35 +286,47 @@ export function GithubSection() {
         </Card>
       ) : (
         <div className="space-y-8">
-          <Card>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-sm font-medium text-muted-foreground">
-                Contribution Graph
-              </h3>
-              <a
-                href={`https://github.com/${GITHUB_USERNAME}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-primary hover:underline"
-              >
-                View Profile
-              </a>
-            </div>
-            {data?.contrib.weeks?.length ? (
-              <ContributionGraph />
-            ) : (
-              <p className="text-muted-foreground text-center py-8">
-                No contribution data available
-              </p>
-            )}
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Contribution Graph
+                </h3>
+                <a
+                  href={`https://github.com/${GITHUB_USERNAME}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline"
+                >
+                  View Profile
+                </a>
+              </div>
+              {data?.contrib.weeks?.length ? (
+                <ContributionGraph />
+              ) : (
+                <p className="text-muted-foreground text-center py-8">
+                  No contribution data available
+                </p>
+              )}
+            </Card>
+          </motion.div>
 
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h3 className="text-lg font-semibold mb-4">Recent Repositories</h3>
-            {data?.repos.length ? (
+              {data?.repos.length ? (
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {data.repos.map((repo) => (
-                  <RepoCard key={repo.id} repo={repo} />
+                {data.repos.map((repo, index) => (
+                  <RepoCard key={repo.id} repo={repo} index={index} />
                 ))}
               </div>
             ) : (
@@ -316,7 +334,7 @@ export function GithubSection() {
                 No repositories found
               </p>
             )}
-          </div>
+          </motion.div>
         </div>
       )}
     </Section>
