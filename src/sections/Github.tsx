@@ -4,6 +4,7 @@ import { useEffect, useState, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Section, SectionHeading, Card } from '@/components/ui';
 import { GithubRepo, GithubContributions } from '@/types';
+import { useTheme } from '@/lib/theme-provider';
 
 const GitHubCalendar = lazy(() => import('react-github-calendar').then((mod) => ({ default: mod.GitHubCalendar })));
 
@@ -139,12 +140,13 @@ async function fetchGithubData(): Promise<{
 }
 
 function ContributionGraph() {
+  const { resolvedTheme } = useTheme();
   return (
     <div className="w-full overflow-x-auto">
       <Suspense fallback={<div className="text-muted-foreground text-center py-8">Loading...</div>}>
-        <GitHubCalendar 
+        <GitHubCalendar
           username={GITHUB_USERNAME}
-          colorScheme="dark"
+          colorScheme={resolvedTheme}
           fontSize={12}
           blockSize={11}
           blockMargin={2}
@@ -179,7 +181,7 @@ function RepoCard({ repo, index }: { repo: GithubRepo; index: number }) {
       href={repo.html_url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/30 transition-all group"
+      className="block p-4 rounded-lg border border-border hover:border-primary/50 hover:bg-accent/30 transition-all group cursor-pointer"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}

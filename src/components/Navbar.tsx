@@ -28,7 +28,7 @@ export function Navbar() {
     >
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold gradient-text">
+          <Link href="/" className="text-xl font-bold gradient-text font-mono">
             Kyne
           </Link>
 
@@ -45,7 +45,7 @@ export function Navbar() {
             ))}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-accent hover:text-primary transition-colors"
+              className="p-2 rounded-lg hover:bg-accent hover:text-primary transition-colors cursor-pointer"
               aria-label="Toggle theme"
             >
               {resolvedTheme === 'dark' ? (
@@ -82,7 +82,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="md:hidden p-2 hover:text-primary transition-colors"
+            className="md:hidden p-2 hover:text-primary transition-colors cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

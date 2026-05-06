@@ -4,11 +4,6 @@ import { motion } from 'framer-motion';
 import { Section, SectionHeading, Card } from '@/components/ui';
 import { socials } from '@/data/portfolio';
 
-const socialColors: Record<string, string> = {
-  github: '#24292e',
-  linkedin: '#0a66c2',
-  email: '#8b5cf6',
-};
 
 const socialIcons = {
   github: (
@@ -88,12 +83,10 @@ export function ContactSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300"
+                className="flex items-center gap-3 px-6 py-3 rounded-xl bg-primary text-primary-foreground hover:opacity-90 transition-all duration-300 cursor-pointer"
                 aria-label={contact.name}
               >
-                <span style={{ color: socialColors[contact.icon] }}>
-                  {socialIcons[contact.icon as keyof typeof socialIcons]}
-                </span>
+                {socialIcons[contact.icon as keyof typeof socialIcons]}
                 <span className="font-medium">{contact.name}</span>
               </motion.a>
             ))}

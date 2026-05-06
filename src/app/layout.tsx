@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Fira_Code } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/lib/theme-provider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-mono', weight: ['400', '500', '600', '700'] });
 
 export const metadata: Metadata = {
   title: 'Kyne | Cybersecurity Student & Software Developer',
@@ -43,7 +44,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${firaCode.variable} font-sans antialiased`}>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:font-medium"
+        >
+          Skip to main content
+        </a>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

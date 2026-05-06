@@ -36,7 +36,7 @@ export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
     >
       <div className="flex items-center gap-4 mb-2">
         <div className="h-1 w-12 bg-gradient-to-r from-primary to-highlight rounded-full" />
-        <h2 className="text-3xl md:text-4xl font-bold">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-bold font-mono">{title}</h2>
       </div>
       {subtitle && <p className="text-muted-foreground ml-16">{subtitle}</p>}
     </motion.div>

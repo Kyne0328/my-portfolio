@@ -14,7 +14,7 @@ export function Card({ children, className = '', hover = false, accent = false }
       whileHover={hover ? { y: -4 } : undefined}
       className={`
         bg-card text-card-foreground rounded-xl border border-border p-6 
-        ${hover ? 'transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5' : ''} 
+        ${hover ? 'transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 cursor-pointer' : ''}
         ${accent ? 'border-l-2 border-l-primary' : ''}
         ${className}
       `}
