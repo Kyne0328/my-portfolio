@@ -52,13 +52,13 @@ export const skills = {
   languages: ['Java', 'Python', 'C', 'JavaScript', 'PHP', 'SQL', 'Dart', 'Kotlin'],
   backend: ['Node.js', 'MySQL', 'PostgreSQL', 'Supabase', 'Firebase', 'Flutter', 'Android development'],
   security: ['Wireshark', 'Cybersecurity fundamentals'],
-  aiTools: ['AI-assisted coding workflows', 'MCP servers'],
+  aiTools: ['LLM-integrated developer tools'],
   platforms: ['Windows', 'Linux', 'Ubuntu'],
   devops: ['Git', 'GitHub', 'GitHub Actions', 'Vercel', 'Render', 'VS Code', 'Figma'],
 };
 
 export const socials = {
-  email: 'kyneant@gmail.com',
+  email: 'kynskie13@gmail.com',
   github: 'https://github.com/Kyne0328',
   linkedin: 'https://linkedin.com/in/kyne-anthony-pizon',
 };
