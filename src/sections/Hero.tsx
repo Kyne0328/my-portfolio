@@ -77,9 +77,6 @@ export function HeroSection() {
           <Button href="#projects" variant="primary">
             View Projects
           </Button>
-          <Button href={socials.github} variant="outline" className="inline-flex items-center gap-2">
-            GitHub Profile
-          </Button>
           <Button href="/resume.pdf" variant="outline" className="inline-flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
