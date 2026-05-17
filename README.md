@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kyne Anthony Pizon - Portfolio
+
+Personal portfolio website for **Kyne Anthony F. Pizon**, a BS Computer Science student focused on backend development, cybersecurity fundamentals, and AI-assisted developer tools.
+
+Live site: https://kyneanthony.vercel.app
+
+## Overview
+
+This portfolio highlights practical software projects, technical skills, GitHub links, and a downloadable resume. It is designed for internship applications, technical writing requirements, and mock job interviews for software engineering roles.
+
+## Tech Stack
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- Vercel
+
+## Main Sections
+
+- Hero introduction
+- About Me
+- Skills
+- Featured Projects
+- GitHub Activity
+- Contact
+
+## Featured Projects
+
+- **Rel.AI MCP** - Local MCP bridge for controlled workspace access, repository snapshots, verification commands, and git diff review.
+- **Rel.AI** - Local coding-assistance workflow for selected workspace context and patch-based code updates.
+- **URL-Analysis** - Machine learning-based web app for URL pattern exploration and security-oriented analysis.
+- **JJ-Clover SMS Booking and Dispatch System** - Flutter app for SMS-based water delivery booking and dispatch.
+- **FarmDashR** - Flutter farm-to-table marketplace connecting farmers and customers.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Replace `public/resume.pdf` with the latest resume/CV file before deploying.
+- Add `public/og-image.png` if you want better previews when sharing the site link.
+- Keep project descriptions and resume content consistent with GitHub and LinkedIn.

@@ -5,9 +5,9 @@ import { Section, SectionHeading, Card } from '@/components/ui';
 import { siteConfig } from '@/data/portfolio';
 
 const highlights = [
+  { label: 'Program', value: 'BS Computer Science' },
   { label: 'Year', value: '3rd Year' },
-  { label: 'Focus', value: 'Cybersecurity' },
-  { label: 'Interest', value: 'Secure Systems' },
+  { label: 'Focus', value: 'Backend, Security, AI Tools' },
 ];
 
 export function AboutSection() {
@@ -25,26 +25,21 @@ export function AboutSection() {
         >
           <p className="text-lg text-foreground leading-relaxed">
             I&apos;m a{' '}
-            <span className="text-primary font-semibold">3rd year Cybersecurity student</span>{' '}
-            at{' '}
-            <span className="text-highlight">{siteConfig.university}</span>,
-            focused on building secure and scalable systems that create real-world
-            impact.
+            <span className="text-primary font-semibold">third-year BS Computer Science student</span>{' '}
+            at <span className="text-highlight">{siteConfig.university}</span>, focused on
+            backend development, cybersecurity fundamentals, and practical software engineering.
           </p>
 
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I&apos;m passionate about developing solutions that address practical
-            challenges, with a strong interest in exploring different areas of
-            cybersecurity. My approach combines technical skills with a curious
-            mindset, always looking for opportunities to learn and grow in this
-            rapidly evolving field.
+            I enjoy building projects that solve real problems, from mobile applications and
+            database-backed systems to local AI-assisted developer tools. I like working on the
+            parts of software that make workflows more reliable, controlled, and useful.
           </p>
 
           <p className="text-lg text-muted-foreground leading-relaxed">
-            When I&apos;m not coding, you can find me researching security
-            vulnerabilities, experimenting with new technologies, or working on
-            projects that merge my interests in software development and
-            cybersecurity.
+            I&apos;m currently improving my technical communication through README files, project
+            documentation, and team-based academic work while continuing to strengthen my skills in
+            backend systems, security-aware development, and automation.
           </p>
         </motion.div>
 

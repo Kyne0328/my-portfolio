@@ -8,7 +8,10 @@ import { Project } from '@/types';
 export function ProjectsSection({ projects = initialProjects }: { projects?: Project[] }) {
   return (
     <Section id="projects" alternate>
-      <SectionHeading title="Projects" subtitle="Things I've built" />
+      <SectionHeading
+        title="Featured Projects"
+        subtitle="Practical software, developer tools, and security-aware systems"
+      />
 
       <div className="grid md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
@@ -20,7 +23,7 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
             transition={{ duration: 0.4, delay: index * 0.05 }}
           >
             <Card hover className="h-full flex flex-col group">
-              <div className="flex items-start justify-between mb-3">
+              <div className="flex items-start justify-between gap-4 mb-3">
                 <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
@@ -35,7 +38,7 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
                   </motion.div>
                 )}
               </div>
-              <p className="text-muted-foreground mb-4 flex-grow">
+              <p className="text-muted-foreground mb-4 flex-grow leading-relaxed">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
@@ -45,15 +48,10 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{
-                      duration: 0.2,
-                      delay: techIndex * 0.03,
-                    }}
+                    transition={{ duration: 0.2, delay: techIndex * 0.03 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <Badge variant="outline">
-                      {tech}
-                    </Badge>
+                    <Badge variant="outline">{tech}</Badge>
                   </motion.div>
                 ))}
               </div>
@@ -61,6 +59,7 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
                 href={project.github}
                 variant="ghost"
                 className="inline-flex items-center gap-2 w-fit text-muted-foreground hover:text-primary"
+                ariaLabel={`View ${project.title} on GitHub`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

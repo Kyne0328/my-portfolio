@@ -4,32 +4,53 @@ import './globals.css';
 import { ThemeProvider } from '@/lib/theme-provider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-mono', weight: ['400', '500', '600', '700'] });
+const firaCode = Fira_Code({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500', '600', '700'],
+});
+
+const siteUrl = 'https://kyneanthony.vercel.app';
 
 export const metadata: Metadata = {
-  title: 'Kyne | Cybersecurity Student & Software Developer',
+  metadataBase: new URL(siteUrl),
+  title: 'Kyne Anthony Pizon | Software Developer Portfolio',
   description:
-    '3rd year Cybersecurity student at University of Mindanao - Tagum Campus. Building real-world solutions focused on secure and scalable systems.',
+    'BS Computer Science student focused on backend systems, cybersecurity fundamentals, and AI-assisted developer tools.',
   keywords: [
-    'Cybersecurity',
+    'Kyne Anthony Pizon',
     'Software Developer',
-    'Portfolio',
-    'Kyne',
+    'Backend Development',
+    'Cybersecurity Fundamentals',
+    'AI Developer Tools',
+    'Computer Science',
     'University of Mindanao',
   ],
-  authors: [{ name: 'Kyne' }],
+  authors: [{ name: 'Kyne Anthony Pizon' }],
+  creator: 'Kyne Anthony Pizon',
   openGraph: {
-    title: 'Kyne | Cybersecurity Student & Software Developer',
+    title: 'Kyne Anthony Pizon | Software Developer Portfolio',
     description:
-      '3rd year Cybersecurity student building secure and scalable systems.',
+      'BS Computer Science student focused on backend systems, cybersecurity fundamentals, and AI-assisted developer tools.',
+    url: siteUrl,
+    siteName: 'Kyne Anthony Pizon Portfolio',
     type: 'website',
     locale: 'en_US',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Kyne Anthony Pizon Portfolio',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kyne | Cybersecurity Student & Software Developer',
+    title: 'Kyne Anthony Pizon | Software Developer Portfolio',
     description:
-      '3rd year Cybersecurity student building secure and scalable systems.',
+      'BS Computer Science student focused on backend systems, cybersecurity fundamentals, and AI-assisted developer tools.',
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -42,6 +63,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Kyne Anthony F. Pizon',
+    url: siteUrl,
+    sameAs: ['https://github.com/Kyne0328', 'https://linkedin.com/in/kyne-anthony-pizon'],
+    jobTitle: 'Software Developer',
+    affiliation: 'University of Mindanao - Tagum Campus',
+    knowsAbout: [
+      'Backend Development',
+      'Cybersecurity Fundamentals',
+      'AI-assisted developer tools',
+      'Mobile Development',
+      'Web Development',
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${firaCode.variable} font-sans antialiased`}>
@@ -51,6 +89,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

@@ -12,6 +12,7 @@ interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   href?: string;
+  ariaLabel?: string;
 }
 
 export function Button({
@@ -23,6 +24,7 @@ export function Button({
   type = 'button',
   onClick,
   href,
+  ariaLabel,
 }: ButtonProps) {
   const baseStyles =
     'inline-flex items-center justify-center font-medium transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
@@ -47,16 +49,19 @@ export function Button({
     disabled,
     type,
     onClick,
+    'aria-label': ariaLabel,
   };
 
   if (href) {
     const isPdf = href.endsWith('.pdf');
+    const isExternal = href.startsWith('http');
+
     return (
       <motion.a
         href={disabled ? undefined : href}
         download={isPdf ? true : undefined}
-        target={isPdf ? '_blank' : undefined}
-        rel={isPdf ? 'noopener noreferrer' : undefined}
+        target={isPdf || isExternal ? '_blank' : undefined}
+        rel={isPdf || isExternal ? 'noopener noreferrer' : undefined}
         {...componentProps}
       >
         {children}
@@ -64,9 +69,5 @@ export function Button({
     );
   }
 
-  return (
-    <motion.button {...componentProps}>
-      {children}
-    </motion.button>
-  );
+  return <motion.button {...componentProps}>{children}</motion.button>;
 }

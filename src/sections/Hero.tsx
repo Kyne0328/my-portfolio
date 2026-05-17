@@ -4,11 +4,13 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
 import { siteConfig, socials } from '@/data/portfolio';
 
+const focusAreas = ['Backend Systems', 'AI-Assisted Tools', 'Cybersecurity Fundamentals'];
+
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 pb-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-highlight-soft via-transparent to-transparent pointer-events-none" />
-      
+
       <div className="max-w-5xl mx-auto px-4 md:px-8 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,10 +19,10 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
         >
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
           </span>
-          Open to opportunities
+          Open to software engineering internships
         </motion.div>
 
         <motion.h1
@@ -38,19 +40,33 @@ export function HeroSection() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl md:text-2xl text-foreground font-medium mb-6"
         >
-          <span className="text-primary">{siteConfig.tagline.split('&')[0]}</span>
-          <span className="text-muted-foreground"> & </span>
-          <span className="text-highlight">{siteConfig.tagline.split('&')[1]}</span>
+          {siteConfig.tagline}
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-muted-foreground max-w-2xl mx-auto mb-8 text-lg"
+          className="text-muted-foreground max-w-2xl mx-auto mb-6 text-lg leading-relaxed"
         >
           {siteConfig.description}
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="flex flex-wrap justify-center gap-3 mb-8"
+        >
+          {focusAreas.map((area) => (
+            <span
+              key={area}
+              className="rounded-full border border-border bg-card/80 px-4 py-2 text-sm font-medium text-muted-foreground"
+            >
+              {area}
+            </span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,11 +77,10 @@ export function HeroSection() {
           <Button href="#projects" variant="primary">
             View Projects
           </Button>
-          <Button
-            href="/resume.pdf"
-            variant="outline"
-            className="inline-flex items-center gap-2"
-          >
+          <Button href={socials.github} variant="outline" className="inline-flex items-center gap-2">
+            GitHub Profile
+          </Button>
+          <Button href="/resume.pdf" variant="outline" className="inline-flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="18"
@@ -94,11 +109,11 @@ export function HeroSection() {
           className="flex items-center justify-center gap-6 mt-12"
         >
           <motion.a
-            href="https://github.com/Kyne0328"
+            href={socials.github}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            aria-label="GitHub profile"
+            aria-label="Open Kyne Anthony Pizon's GitHub profile"
             whileHover={{ scale: 1.15 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -106,11 +121,11 @@ export function HeroSection() {
             </svg>
           </motion.a>
           <motion.a
-            href="https://www.linkedin.com/in/ky-ne-undefined-505b5336a/"
+            href={socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            aria-label="LinkedIn profile"
+            aria-label="Open Kyne Anthony Pizon's LinkedIn profile"
             whileHover={{ scale: 1.15 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -120,7 +135,7 @@ export function HeroSection() {
           <motion.a
             href={`mailto:${socials.email}`}
             className="text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-            aria-label="Send email"
+            aria-label="Send email to Kyne Anthony Pizon"
             whileHover={{ scale: 1.15 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -140,12 +155,10 @@ export function HeroSection() {
         <a
           href="#about"
           className="flex flex-col items-center text-muted-foreground hover:text-primary transition-colors"
+          aria-label="Scroll to about section"
         >
           <span className="text-sm mb-2">Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
+          <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
