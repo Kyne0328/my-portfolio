@@ -50,9 +50,13 @@ export function Button({
   };
 
   if (href) {
+    const isPdf = href.endsWith('.pdf');
     return (
       <motion.a
         href={disabled ? undefined : href}
+        download={isPdf ? true : undefined}
+        target={isPdf ? '_blank' : undefined}
+        rel={isPdf ? 'noopener noreferrer' : undefined}
         {...componentProps}
       >
         {children}
