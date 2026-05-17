@@ -28,8 +28,10 @@ export function Navbar() {
     >
       <div className="max-w-5xl mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold gradient-text font-mono">
-            Kyne
+          <Link href="/" className="text-xl font-bold font-mono">
+            <span className="text-muted-foreground">{'<'}</span>
+            <span className="gradient-text">Kyne</span>
+            <span className="text-muted-foreground">{'/>'}</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">

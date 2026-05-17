@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface CardProps {
@@ -6,14 +6,16 @@ interface CardProps {
   className?: string;
   hover?: boolean;
   accent?: boolean;
+  style?: CSSProperties;
 }
 
-export function Card({ children, className = '', hover = false, accent = false }: CardProps) {
+export function Card({ children, className = '', hover = false, accent = false, style }: CardProps) {
   return (
     <motion.div
       whileHover={hover ? { y: -4 } : undefined}
+      style={style}
       className={`
-        bg-card text-card-foreground rounded-xl border border-border p-6 
+        bg-card text-card-foreground rounded-xl border border-border p-6
         ${hover ? 'transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 cursor-pointer' : ''}
         ${accent ? 'border-l-2 border-l-primary' : ''}
         ${className}

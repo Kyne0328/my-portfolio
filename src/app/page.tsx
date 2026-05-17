@@ -1,4 +1,5 @@
 import { Navbar } from '@/components/Navbar';
+import { CursorSpotlight } from '@/components/CursorSpotlight';
 import {
   HeroSection,
   AboutSection,
@@ -11,6 +12,7 @@ import {
 export default function Home() {
   return (
     <>
+      <CursorSpotlight />
       <Navbar />
       <main id="main">
         <HeroSection />

@@ -5,6 +5,19 @@ import { Section, SectionHeading, Card, Badge, Button } from '@/components/ui';
 import { projects as initialProjects } from '@/data/portfolio';
 import { Project } from '@/types';
 
+const techAccentColors: Record<string, string> = {
+  'Node.js': '#339933',
+  JavaScript: '#f59e0b',
+  Python: '#3572A5',
+  Flutter: '#02569B',
+  Dart: '#00B4AB',
+  Java: '#b07219',
+  PHP: '#4F5D95',
+  Kotlin: '#7F52FF',
+  MCP: '#0ea5e9',
+  Git: '#F05032',
+};
+
 export function ProjectsSection({ projects = initialProjects }: { projects?: Project[] }) {
   return (
     <Section id="projects" alternate>
@@ -22,7 +35,14 @@ export function ProjectsSection({ projects = initialProjects }: { projects?: Pro
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
           >
-            <Card hover className="h-full flex flex-col group">
+            <Card
+              hover
+              className="h-full flex flex-col group"
+              style={{
+                borderTopColor: techAccentColors[project.tech[0]] ?? 'var(--primary)',
+                borderTopWidth: '2px',
+              }}
+            >
               <div className="flex items-start justify-between gap-4 mb-3">
                 <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                   {project.title}

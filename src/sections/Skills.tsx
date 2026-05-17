@@ -3,58 +3,8 @@
 import { motion } from 'framer-motion';
 import { Section, SectionHeading, Card } from '@/components/ui';
 import { skills } from '@/data/portfolio';
-import {
-  Code2,
-  Shield,
-  Monitor,
-  FileCode,
-  Database,
-  Hexagon,
-  GitBranch,
-  HardDrive,
-  Github,
-  Server,
-  Bot,
-  Smartphone,
-  Wrench,
-} from 'lucide-react';
 
-const skillIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  Java: Hexagon,
-  Python: Code2,
-  C: Code2,
-  JavaScript: Code2,
-  SQL: Database,
-  MySQL: Database,
-  HTML: FileCode,
-  CSS: FileCode,
-  PHP: Code2,
-  Dart: Hexagon,
-  Kotlin: Hexagon,
-  'Node.js': Server,
-  APIs: Server,
-  'Server-side development': Server,
-  Flutter: Smartphone,
-  'Android development': Smartphone,
-  Wireshark: Shield,
-  'URL analysis': Shield,
-  'Basic network analysis': Shield,
-  'Cybersecurity fundamentals': Shield,
-  'AI-assisted coding workflows': Bot,
-  'MCP servers': Bot,
-  'Local development automation': Bot,
-  Windows: Monitor,
-  Linux: HardDrive,
-  WSL2: Monitor,
-  Ubuntu: HardDrive,
-  Git: GitBranch,
-  GitHub: Github,
-  'GitHub Actions': Github,
-  'VS Code': FileCode,
-  Figma: Wrench,
-};
-
-const skillIconColors: Record<string, string> = {
+const skillDotColors: Record<string, string> = {
   Java: '#b07219',
   Python: '#3572A5',
   C: '#555555',
@@ -67,24 +17,23 @@ const skillIconColors: Record<string, string> = {
   Dart: '#00B4AB',
   Kotlin: '#7F52FF',
   'Node.js': '#339933',
-  APIs: '#047857',
-  'Server-side development': '#047857',
+  PostgreSQL: '#336791',
+  Supabase: '#3ECF8E',
+  Firebase: '#FFCA28',
   Flutter: '#02569B',
   'Android development': '#3DDC84',
-  Wireshark: '#166544',
-  'URL analysis': '#166544',
-  'Basic network analysis': '#166544',
-  'Cybersecurity fundamentals': '#166544',
-  'AI-assisted coding workflows': '#047857',
-  'MCP servers': '#047857',
-  'Local development automation': '#047857',
+  Wireshark: '#1a7f4b',
+  'Cybersecurity fundamentals': '#1a7f4b',
+  'AI-assisted coding workflows': '#7c3aed',
+  'MCP servers': '#7c3aed',
   Windows: '#00a4ef',
-  Linux: '#333333',
-  WSL2: '#0269b3',
+  Linux: '#e95420',
   Ubuntu: '#E95420',
   Git: '#F05032',
   GitHub: '#24292e',
   'GitHub Actions': '#2088FF',
+  Vercel: '#000000',
+  Render: '#46E3B7',
   'VS Code': '#007ACC',
   Figma: '#F24E1E',
 };
@@ -109,7 +58,7 @@ const skillCategories = [
   },
   {
     title: 'Backend & Database',
-    skills: [...skills.backend, 'HTML', 'CSS'],
+    skills: skills.backend,
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <ellipse cx="12" cy="5" rx="9" ry="3" />
@@ -141,14 +90,14 @@ const skillCategories = [
   },
 ];
 
-function SkillIcon({ name }: { name: string }) {
-  const IconComponent = skillIcons[name];
-  const color = skillIconColors[name] || 'currentColor';
-  if (!IconComponent) return null;
+function SkillDot({ name }: { name: string }) {
+  const color = skillDotColors[name];
+  if (!color) return null;
   return (
-    <span style={{ color }}>
-      <IconComponent className="w-4 h-4" />
-    </span>
+    <span
+      className="inline-block w-2 h-2 rounded-full shrink-0"
+      style={{ backgroundColor: color }}
+    />
   );
 }
 
@@ -176,30 +125,27 @@ export function SkillsSection() {
             transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
           >
             <Card className="h-full">
-              <div className="flex items-center gap-3 mb-4">
-                <CategoryBadge title={category.title} />
-                <h3 className="text-lg font-semibold">{category.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={`${category.title}-${skill}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.2,
-                      delay: skillIndex * 0.03,
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/50 border border-border text-sm hover:border-primary/50 hover:bg-primary/5 transition-colors">
-                      <SkillIcon name={skill} />
-                      <span>{skill}</span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <CategoryBadge title={category.title} />
+                  <h3 className="text-lg font-semibold">{category.title}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={`${category.title}-${skill}`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.2, delay: skillIndex * 0.03 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-secondary/50 border border-border text-sm hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-default">
+                        <SkillDot name={skill} />
+                        <span>{skill}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
             </Card>
           </motion.div>
         ))}

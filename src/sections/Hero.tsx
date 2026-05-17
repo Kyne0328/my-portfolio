@@ -4,12 +4,18 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui';
 import { siteConfig, socials } from '@/data/portfolio';
 
-const focusAreas = ['Backend Systems', 'AI-Assisted Tools', 'Cybersecurity Fundamentals'];
+const focusAreas = ['Backend Systems', 'AI Infrastructure', 'Security Software'];
 
 export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 pb-16 relative overflow-hidden">
+      <div className="absolute inset-0 bg-dot-grid opacity-40 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-br from-highlight-soft via-transparent to-transparent pointer-events-none" />
+      {/* Floating orbs */}
+      <div className="animate-orb absolute top-1/4 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="animate-orb-alt absolute bottom-1/3 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="animate-orb absolute top-2/3 left-1/2 w-48 h-48 bg-highlight/8 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 md:px-8 text-center relative z-10">
         <motion.div
@@ -29,7 +35,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-bold mb-6 gradient-text font-mono"
+          className="text-5xl md:text-7xl font-bold mb-6 gradient-text text-glow font-mono"
         >
           {siteConfig.name}
         </motion.h1>
@@ -61,7 +67,7 @@ export function HeroSection() {
           {focusAreas.map((area) => (
             <span
               key={area}
-              className="rounded-full border border-border bg-card/80 px-4 py-2 text-sm font-medium text-muted-foreground"
+              className="rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary/80 backdrop-blur-sm"
             >
               {area}
             </span>

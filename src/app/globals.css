@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf9;
+  --background: #f0f2f5;
   --foreground: #18181b;
-  --card: #ffffff;
+  --card: #f8f9fb;
   --card-foreground: #18181b;
   --popover: #ffffff;
   --popover-foreground: #18181b;
@@ -67,9 +67,9 @@
 }
 
 [data-theme="light"] {
-  --background: #fafaf9;
+  --background: #f0f2f5;
   --foreground: #18181b;
-  --card: #ffffff;
+  --card: #f8f9fb;
   --card-foreground: #18181b;
   --popover: #ffffff;
   --popover-foreground: #18181b;
@@ -202,6 +202,67 @@ html {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
+}
+
+.bg-dot-grid {
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--foreground) 15%, transparent) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.text-glow {
+  text-shadow: 0 0 80px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.cursor-spotlight {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, -100%) var(--mouse-y, -100%),
+    color-mix(in srgb, var(--primary) 8%, transparent),
+    transparent 80%
+  );
+}
+
+/* Light mode: kill visual effects that only work on dark backgrounds */
+[data-theme="light"] .bg-dot-grid,
+:root:not([data-theme="dark"]) .bg-dot-grid {
+  display: none;
+}
+
+[data-theme="light"] .text-glow,
+:root:not([data-theme="dark"]) .text-glow {
+  text-shadow: none;
+}
+
+[data-theme="light"] .cursor-spotlight,
+:root:not([data-theme="dark"]) .cursor-spotlight {
+  opacity: 0;
+}
+
+[data-theme="light"] .animate-orb,
+[data-theme="light"] .animate-orb-alt,
+:root:not([data-theme="dark"]) .animate-orb,
+:root:not([data-theme="dark"]) .animate-orb-alt {
+  display: none;
+}
+
+@keyframes float-orb {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(30px, -40px) scale(1.05); }
+  66%       { transform: translate(-20px, 20px) scale(0.97); }
+}
+
+@keyframes float-orb-alt {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-40px, 30px) scale(1.03); }
+  66%       { transform: translate(25px, -20px) scale(0.98); }
+}
+
+.animate-orb {
+  animation: float-orb 12s ease-in-out infinite;
+}
+
+.animate-orb-alt {
+  animation: float-orb-alt 16s ease-in-out infinite;
+  animation-delay: -5s;
 }
 
 @media (prefers-reduced-motion: reduce) {
