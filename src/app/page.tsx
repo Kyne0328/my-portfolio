@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/Navbar';
 import { CursorSpotlight } from '@/components/CursorSpotlight';
+import { LoadingScreen } from '@/components/LoadingScreen';
 import {
   HeroSection,
   AboutSection,
@@ -12,6 +13,7 @@ import {
 export default function Home() {
   return (
     <>
+      <LoadingScreen />
       <CursorSpotlight />
       <Navbar />
       <main id="main">
