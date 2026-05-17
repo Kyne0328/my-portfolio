@@ -40,7 +40,7 @@ export const skills = {
 export const socials = {
   email: 'Kynskie13@gmail.com',
   github: 'https://github.com/Kyne0328',
-  linkedin: 'https://www.linkedin.com/in/ky-ne-undefined-505b5336a/',
+  linkedin: 'http://linkedin.com/in/kyne-anthony-pizon/',
 };
 
 export const siteConfig = {
