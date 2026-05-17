@@ -38,7 +38,7 @@ export function ContactSection() {
 
   return (
     <Section id="contact" alternate>
-      <SectionHeading title="Get in Touch" subtitle="Open to internships, project feedback, and collaboration" />
+      <SectionHeading title="Get in Touch" subtitle="Open to jobs, project feedback, and collaboration" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
